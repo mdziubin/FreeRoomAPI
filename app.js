@@ -1,6 +1,10 @@
+// Package Imports
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("./middleware/cors");
+
+// Route Imports
+const testRoutes = require("./routes/test");
 
 const app = express();
 const port = 3000;
@@ -9,6 +13,7 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(cors);
 
+app.use("/test", testRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
