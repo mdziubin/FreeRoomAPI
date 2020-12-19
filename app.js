@@ -5,6 +5,7 @@ const cors = require("./middleware/cors");
 
 // Route Imports
 const testRoutes = require("./routes/test");
+const locationRoutes = require("./routes/locations");
 
 const app = express();
 const port = 3000;
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 app.use(cors);
 
 app.use("/test", testRoutes);
+app.use("/locations", locationRoutes);
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
