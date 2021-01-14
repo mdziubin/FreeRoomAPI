@@ -6,6 +6,7 @@ const cors = require("./middleware/cors");
 // Route Imports
 const testRoutes = require("./routes/test");
 const locationRoutes = require("./routes/locations");
+const scheduleRoutes = require("./routes/schedule");
 
 const app = express();
 const port = 3000;
@@ -16,6 +17,7 @@ app.use(cors);
 
 app.use("/test", testRoutes);
 app.use("/locations", locationRoutes);
+app.use("/schedule", scheduleRoutes);
 app.use((req, res) => {
   console.log("Request to non-existant route " + req.url + " 404ed");
   res.status(404).json({ message: "Route not found" });
