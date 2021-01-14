@@ -8,6 +8,6 @@ const router = express.Router();
 router.get("/buildings", locationController.getBuildings);
 
 // GET /locations/<building key>
-router.get("/:bKey", locationController.getRooms);
+router.get("/rooms/:bKey", locationController.getRooms);
 
 module.exports = router;

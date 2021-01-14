@@ -16,8 +16,18 @@ app.use(cors);
 
 app.use("/test", testRoutes);
 app.use("/locations", locationRoutes);
-app.get("/", (req, res) => {
-  res.send("Hello World!");
+app.use((req, res) => {
+  console.log("Request to non-existant route " + req.url + " 404ed");
+  res.status(404).json({ message: "Route not found" });
+});
+
+// Error Middleware
+app.use((error, _req, res, _next) => {
+  console.log(error);
+  const status = error.status || 500;
+  const message = error.message;
+  const data = error.data;
+  res.status(status).json({ message: message, data: data });
 });
 
 app.listen(port, () => {
